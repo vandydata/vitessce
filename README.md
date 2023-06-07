@@ -147,7 +147,34 @@ npm install gh-pages --save-dev
 }
 ```
 
-6. In `src/package.sjon`, add pre-deploy and deploy to the scripts:
+6. Modify `src/index.css` to include information Vitessce uses for positioning modules.
+
+```css
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  margin: 0;
+}
+
+.vitessce-container {
+  height: max(100%, 100vh);
+  width: 100%;
+}
+```
+
+7. In `src/package.sjon`, add pre-deploy and deploy to the scripts:
 
 ```json
 {
@@ -164,14 +191,14 @@ npm install gh-pages --save-dev
 }
 ```
 
-7. Deploy to github pages
+8. Deploy to github pages
     - This step takes a few minutes
 ```bash
 # example
 npm run deploy -- -m "Uploading Shrestha JCI2021 complete dataset in Vitessce viewer to Github pages"
 ```
 
-8. Configure Github Pages
+9. Configure Github Pages
    - Go to the Github repo in the browser
    - Click on `Settings`
    - In the `Code and automation` section, click on `Pages`
