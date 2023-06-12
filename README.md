@@ -9,7 +9,13 @@ npm init react-app shrestha_jci2021 --use-npm
 npm install vitessce --save
 ```
 
-2. In the react app, change the `src/App.js` to return the Vitessce component
+2. Install the gh-pages npm package
+
+```bash
+npm install gh-pages --save-dev
+```
+
+3. In the react app, change the `src/App.js` to return the Vitessce component
 
 ```js
 import React from 'react';
@@ -26,7 +32,7 @@ export default function App() {
 }
 ```
 
-3. Create a config file ->  `src/my-view-config.js` file
+4. Create a config file ->  `src/my-view-config.js` file
     - The `url` section points to a file hosted in AWS S3
 
 ```js
@@ -130,12 +136,6 @@ export const myViewConfig = {
 }
 ```
 
-1. Install the gh-pages npm package
-
-```bash
-npm install gh-pages --save-dev
-```
-
 5. Update the homepage info in `src/package.json`
  
 ```json
@@ -147,7 +147,24 @@ npm install gh-pages --save-dev
 }
 ```
 
-6. Modify `src/index.css` to include information Vitessce uses for positioning modules.
+6. In `src/package.json`, add pre-deploy and deploy to the scripts:
+
+```json
+{
+    ...
+    "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    ...
+}
+```
+
+7. Modify `src/index.css` to include information Vitessce uses for positioning modules.
 
 ```css
 html {
@@ -174,22 +191,6 @@ body {
 }
 ```
 
-7. In `src/package.sjon`, add pre-deploy and deploy to the scripts:
-
-```json
-{
-    ...
-    "scripts": {
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d build",
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
-    },
-    ...
-}
-```
 
 8. Deploy to github pages
     - This step takes a few minutes
